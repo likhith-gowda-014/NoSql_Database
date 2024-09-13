@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Income vs Expense</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tables {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .container a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            text-align: center;
+        }
+        .container a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Monthly Income vs Expense</h1>
+        <div class="tables">
+            <div class="income">
+                <h2>Monthly Income</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Income</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if income|length > 0 %}
+                            {% for entry in income %}
+                                <tr>
+                                    <td>{{ entry['_id'] }}</td>
+                                    <td>₹{{ "{:,.2f}".format(entry['total']) }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr><td colspan="2">No income data available</td></tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="expenses">
+                <h2>Monthly Expenses</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Expense</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if expenses|length > 0 %}
+                            {% for entry in expenses %}
+                                <tr>
+                                    <td>{{ entry['_id'] }}</td>
+                                    <td>₹{{ "{:,.2f}".format(entry['total']) }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr><td colspan="2">No expenses data available</td></tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>

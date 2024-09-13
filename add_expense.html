@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .container label {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .container input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .container button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+        .container a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Expense</h1>
+        <form action="/add_expense" method="post">
+            <label for="date">
+                Date:
+                <input type="date" id="date" name="date" required>
+            </label>
+            <label for="amount">
+                Amount:
+                <input type="number" id="amount" name="amount" step="0.01" required>
+            </label>
+            <label for="category">
+                Category:
+                <input type="text" id="category" name="category" required>
+            </label>
+            <label for="description">
+                Description:
+                <input type="text" id="description" name="description">
+            </label>
+            <button type="submit">Add Expense</button>
+        </form>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>

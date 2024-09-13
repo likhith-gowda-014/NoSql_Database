@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Spending Analysis</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .container a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            text-align: center;
+        }
+        .container a:hover {
+            color: #0056b3;
+        }
+        .form-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-container input[type="month"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Monthly Spending Analysis</h1>
+        <div class="form-container">
+            <form method="post" action="/monthly_spending">
+                <label for="month">Select Month:</label>
+                <input type="month" id="month" name="month" value="{{ '{:04d}-{:02d}'.format(year, month) }}" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <h2>Expenses</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in expenses_list %}
+                    <tr>
+                        <td>{{ item['_id'] }}</td>
+                        <td>₹{{ "{:,.2f}".format(item['total']) }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">No data available</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Budget Tracker</h1>
+        <a href="/add_income">Add Income</a>
+        <a href="/add_expense">Add Expense</a>
+        <a href="/view/Income">View Income</a>
+        <a href="/view/Expense">View Expense</a>
+        <a href="/analysis">Analysis</a>
+    </div>
+</body>
+</html>
